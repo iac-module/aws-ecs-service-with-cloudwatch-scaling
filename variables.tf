@@ -124,7 +124,7 @@ variable "ecs_service" {
 
 
 
-variable "metric_alarm" {
+variable "metric_alarm_1" {
   description = "Metric-alarm resource"
   type = object({
     create_metric_alarm                   = optional(bool, true)
@@ -150,7 +150,42 @@ variable "metric_alarm" {
     evaluate_low_sample_count_percentiles = optional(string, null)
     metric_query                          = optional(any, [])
     tags                                  = optional(map(string), {})
+    autoscaling_policies_id               = optional(string, "1")
+  })
+  default = ({
+    create_metric_alarm = false
+  })
+}
 
-    autoscaling_policies_id = optional(string, "sqs")
+variable "metric_alarm_2" {
+  description = "Metric-alarm resource"
+  type = object({
+    create_metric_alarm                   = optional(bool, false)
+    alarm_name                            = optional(string, "default")
+    alarm_description                     = optional(string, null)
+    comparison_operator                   = optional(string, "GreaterThanOrEqualToThreshold")
+    evaluation_periods                    = optional(number, 1)
+    threshold                             = optional(number, null)
+    threshold_metric_id                   = optional(string, null)
+    unit                                  = optional(string, null)
+    metric_name                           = optional(string, null)
+    namespace                             = optional(string, null)
+    period                                = optional(string, null)
+    statistic                             = optional(string, null)
+    actions_enabled                       = optional(bool, true)
+    datapoints_to_alarm                   = optional(number, null)
+    dimensions                            = optional(any, null)
+    alarm_actions                         = optional(list(string), null)
+    insufficient_data_actions             = optional(list(string), null)
+    ok_actions                            = optional(list(string), null)
+    extended_statistic                    = optional(string, null)
+    treat_missing_data                    = optional(string, "missing")
+    evaluate_low_sample_count_percentiles = optional(string, null)
+    metric_query                          = optional(any, [])
+    tags                                  = optional(map(string), {})
+    autoscaling_policies_id               = optional(string, "2")
+  })
+  default = ({
+    create_metric_alarm = false
   })
 }

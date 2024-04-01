@@ -154,12 +154,26 @@ output "security_group_id" {
 ################################################################################
 # Metric Alert
 ################################################################################
-output "cloudwatch_metric_alarm_arn" {
+output "cloudwatch_metric_alarm_1_arn" {
   description = "The ARN of the Cloudwatch metric alarm."
-  value       = try(module.metric_alerm[0].cloudwatch_metric_alarm_arn, "")
+  value       = try(module.metric_alerm_1[0].cloudwatch_metric_alarm_arn, "")
 }
 
-output "cloudwatch_metric_alarm_id" {
+output "cloudwatch_metric_alarm_1_id" {
   description = "The ID of the Cloudwatch metric alarm."
-  value       = try(module.metric_alerm[0].cloudwatch_metric_alarm_id, "")
+  value       = try(module.metric_alerm_1[0].cloudwatch_metric_alarm_id, "")
+}
+
+
+################################################################################
+# Metric Alert
+################################################################################
+output "cloudwatch_metric_alarm_2_arn" {
+  description = "The ARN of the Cloudwatch metric alarm."
+  value       = try(module.metric_alerm_2[0].cloudwatch_metric_alarm_arn, "")
+}
+
+output "cloudwatch_metric_alarm_2_id" {
+  description = "The ID of the Cloudwatch metric alarm."
+  value       = try(module.metric_alerm_1[0].cloudwatch_metric_alarm_id, "")
 }
